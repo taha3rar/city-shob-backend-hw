@@ -2,11 +2,12 @@ import { Schema, model } from 'mongoose';
 
 const nodeSchema = new Schema({
   isParent: Boolean,
-  label: { String, required: true },
+  label: { type: String, required: true },
   icon: String,
-  children: [{ type: Schema.Types.ObjectId, ref: 'Node' }],
+  children: [{ type: Schema.Types.ObjectId, ref: 'Node', required: false }],
   data: { type: Schema.Types.Mixed },
 });
 
-const Node = model('Node', nodeSchema);
-export default { Node };
+const nodeModel = model('Node', nodeSchema);
+
+export { nodeModel };
